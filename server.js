@@ -20,6 +20,13 @@ app.use(middleware);
 // Set up the /api route
 app.use('/api', api);
 
+// Create a wildcard to catch 
+app.get('*', (req, res) => {
+    res.status(404).json({
+        message: "You've attempted to reach a URL that doesn't exist."
+    });
+});
+
 // Let the server listen on the given port
 app.listen(port, (err) => {
     err ? console.log(err) : console.log(`Listening on port ${port}`)
