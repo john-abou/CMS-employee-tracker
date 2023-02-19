@@ -15,3 +15,6 @@ employees.post('/', (req,res) => {
 employees.put('/', (req,res) => {
 
 });
+
+// Export the employees router
+module.exports = employees;
