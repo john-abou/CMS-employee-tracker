@@ -29,7 +29,7 @@ department.post('/', (req,res) => {
     const departmentName = req.body["depName"];
 
     // Define the query string in a variable
-    const queryString = `INSERT INTO department (departmentName) VALUES (?)`;
+    const queryString = `INSERT INTO department (department_name) VALUES (?)`;
 
     // Query the database
     db.query(queryString, departmentName, (err, results) => {
@@ -55,7 +55,7 @@ department.put('/', (req,res) => {
     const params = [newDepartmentName, departmentName];
 
     // Define the query string in a variable
-    const queryString = `UPDATE department SET departmentName = ? WHERE departmentName = ?`;
+    const queryString = `UPDATE department SET department_name = ? WHERE department_name = ?`;
 
     // Query the database
     db.query(queryString, params, (err, results) => {

@@ -12,33 +12,30 @@ DROP TABLE IF EXISTS employee;
 
 -- Create a table to store the departments
 CREATE TABLE department (
-    departmentID INT AUTO_INCREMENT PRIMARY KEY,
-    departmentName VARCHAR(30) NOT NULL
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    department_name VARCHAR(30) NOT NULL
 );
 -- Create a table to store the roles
 -- Primary key is roleID, foreign key used to extract department name from department table
 CREATE TABLE roles (
-    roleID INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
     salary INT NOT NULL,
-    departmentID INT NOT NULL,
-    FOREIGN KEY (departmentID) 
-    REFERENCES department(departmentID)
+    department_id INT NOT NULL,
+    FOREIGN KEY (department_id) 
+    REFERENCES department(id)
 );
 
 -- Create a table to store the employees 
 -- primary key is employeeID, foreign keys used to extract job title and department names from roles and department tables
 CREATE TABLE employee (
-    employeeID INT AUTO_INCREMENT PRIMARY KEY,
-    firstName VARCHAR(30) NOT NULL,
-    lastName VARCHAR(30) NOT NULL,
-    roleID INT NOT NULL,
-    departmentID INT NOT NULL,
-    manager VARCHAR(30),
-    FOREIGN KEY (roleID) 
-    REFERENCES roles(roleID),
-    FOREIGN KEY (departmentID) 
-    REFERENCES department(departmentID)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    role_id INT NOT NULL,
+    manager_id VARCHAR(30),
+    FOREIGN KEY (role_id) 
+    REFERENCES roles(id),
 );
 
 source db/seed.sql;

@@ -1,5 +1,5 @@
 -- Data for the department table
-INSERT INTO department (departmentName) 
+INSERT INTO department (department_name) 
     VALUES ('Sales'), 
     ('Engineering'), 
     ('Finance'), 
@@ -10,40 +10,40 @@ INSERT INTO department (departmentName)
     ('Operations');
 
 -- Data for the roles table
-INSERT INTO roles (title, salary, departmentID)
-    VALUES ('Sales Lead', 100000, 1),
-    ('Salesperson', 80000, 1),
-    ('Lead Engineer', 120000, 2),
-    ('Software Engineer', 100000, 2),
-    ('Accountant', 125000, 3),
-    ('Legal Team Lead', 130000, 4),
-    ('Lawyer', 120000, 4),
-    ('HR Lead', 130000, 5),
-    ('HR Representative', 100000, 5),
-    ('Marketing Lead', 130000, 6),
-    ('Marketing Representative', 100000, 6),
-    ('Customer Service Lead', 130000, 7),
-    ('Customer Service Representative', 100000, 7),
-    ('Operations Lead', 130000, 8),
-    ('Operations Representative', 100000, 8);
+INSERT INTO roles (id, title, salary, department_id)
+    VALUES (1, 'Sales Lead', 100000, 1),
+    (2, 'Salesperson', 80000, 1),
+    (3, 'Lead Engineer', 120000, 2),
+    (4, 'Software Engineer', 100000, 2),
+    (5, 'Accountant', 125000, 3),
+    (6, 'Legal Team Lead', 130000, 4),
+    (7, 'Lawyer', 120000, 4),
+    (8, 'HR Lead', 130000, 5),
+    (9, 'HR Representative', 100000, 5),
+    (10, 'Marketing Lead', 130000, 6),
+    (11, 'Marketing Representative', 100000, 6),
+    (12, 'Customer Service Lead', 130000, 7),
+    (13, 'Customer Service Representative', 100000, 7),
+    (14, 'Operations Lead', 130000, 8),
+    (15, 'Operations Representative', 100000, 8);
 
 -- Data for the employee table
-INSERT INTO employee (firstName, lastName, roleID, departmentID, manager)
-    VALUES ('John', 'Doe', 1, 1, NULL),
-    ('Jane', 'Doe', 2, 1, 'John Doe'),
-    ('John', 'Smith', 3, 2, NULL),
-    ('Jane', 'Smith', 4, 2, 'John Smith'),
-    ('John', 'Jones', 5, 3, NULL),
-    ('Jane', 'Jones', 6, 4, NULL),
-    ('John', 'Brown', 7, 4, 'Jane Jones'),
-    ('Jane', 'Brown', 8, 5, NULL),
-    ('John', 'White', 9, 5, 'Jane Brown'),
-    ('Jane', 'White', 10, 6, NULL),
-    ('John', 'Black', 11, 6, 'Jane White'),
-    ('Jane', 'Black', 11, 7, 'Jane White'),
-    ('John', 'Green', 11, 7, 'Jane White'),
-    ('Jane', 'Green', 12, 8, NULL),
-    ('John', 'Blue', 13, 8, 'Jane Green'),
-    ('Jane', 'Blue', 13, 8, 'Jane Green'),
-    ('John', 'Pink', 14, 8, NULL),
-    ('Jane', 'Pink', 15, 8, 'John Pink');
+INSERT INTO employee (firstName, lastName, role_id, manager_id)
+    VALUES ('John', 'Doe', 1, NULL),
+    ('Jane', 'Doe', 2, 1),
+    ('John', 'Smith', 3, NULL),
+    ('Jane', 'Smith', 4, 3),
+    ('John', 'Jones', 5, NULL),
+    ('Jane', 'Jones', 6, NULL),
+    ('John', 'Brown', 7, 6),
+    ('Jane', 'Brown', 8, NULL),
+    ('John', 'White', 9, 8),
+    ('Jane', 'White', 10, NULL),
+    ('John', 'Black', 11, 10),
+    ('Jane', 'Black', 11, 10),
+    ('John', 'Green', 11, 10),
+    ('Jane', 'Green', 12, NULL),
+    ('John', 'Blue', 13, 12),
+    ('Jane', 'Blue', 13, 12),
+    ('John', 'Pink', 14, NULL),
+    ('Jane', 'Pink', 15, 14);
