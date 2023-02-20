@@ -26,8 +26,8 @@ roles.get('/', (req,res) => {
 // POST route for adding a job to the roles table
 roles.post('/', (req,res) => {
     // Extract the name, salary and department from the request
-    const {title, salary, depID} = req.body;
-    const params = [title, salary, depID];
+    const {title, salary, department_id} = req.body;
+    const params = [title, salary, department_id];
 
     // Define the query
     const query = `INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)`

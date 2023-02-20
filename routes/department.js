@@ -26,7 +26,7 @@ department.get('/', (req,res) => {
 // POST route for adding a department to the list of departments
 department.post('/', (req,res) => {
     // Retrieve the department from the client request
-    const name = req.body["depName"];
+    const name = req.body["department_name"];
 
     // Define the query string in a variable
     const queryString = `INSERT INTO department (department_name) VALUES (?)`;
