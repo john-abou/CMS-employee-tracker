@@ -4,7 +4,7 @@ const app = express();
 
 // Import the routes for department, employees and roles
 departmentRouter = require('./department');
-employeesRouter = require('./employees');
+employeeRouter = require('./employee');
 rolesRouter = require('./roles');
 
 // Use the various routes in the express app
