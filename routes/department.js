@@ -8,7 +8,7 @@ department.get('/', (req,res) => {
     const queryString = `SELECT * FROM department`;
 
     // Query the database
-    db.execute(queryString, (err, results) => {
+    db.query(queryString, (err, results) => {
         if (err) {
             res.json({
                 message: "error",

@@ -9,7 +9,7 @@ rolesRouter = require('./roles');
 
 // Use the various routes in the express app
 app.use('/department', departmentRouter);
-app.use('/employees', employeesRouter);
+app.use('/employee', employeeRouter);
 app.use('/roles', rolesRouter);
 
 // Export the express app for the /api route

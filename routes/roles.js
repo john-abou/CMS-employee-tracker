@@ -8,7 +8,7 @@ roles.get('/', (req,res) => {
     const queryString = `SELECT title, r.id, department_name, salary FROM roles AS r INNER JOIN department AS d WHERE d.id = r.department_id`;
 
     // Query the database
-    db.execute(queryString, (err, results) => {
+    db.query(queryString, (err, results) => {
         if (err) {
             res.json({
                 message: "error",
@@ -28,9 +28,6 @@ roles.post('/', (req,res) => {
     // Extract the name, salary and department from the request
     const {title, salary, depID} = req.body;
     const params = [title, salary, depID];
-    // const title = req.body['title'];
-    // const salary = req.body['salary'];
-    // const depID = req.body['depID'];
 
     // Define the query
     const query = `INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)`
@@ -48,11 +45,6 @@ roles.post('/', (req,res) => {
             });
         }
     });
-});
-
-// Put route for updating a role's information
-roles.put('/', (req,res) => {
-
 });
 
 // Export the roles router
