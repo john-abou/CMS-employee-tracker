@@ -26,13 +26,13 @@ department.get('/', (req,res) => {
 // POST route for adding a department to the list of departments
 department.post('/', (req,res) => {
     // Retrieve the department from the client request
-    const departmentName = req.body["depName"];
+    const name = req.body["depName"];
 
     // Define the query string in a variable
     const queryString = `INSERT INTO department (department_name) VALUES (?)`;
 
     // Query the database
-    db.query(queryString, departmentName, (err, results) => {
+    db.query(queryString, name, (err, results) => {
         if (err) {
             res.json({
                 message: "error",
@@ -43,32 +43,6 @@ department.post('/', (req,res) => {
                 message: "success",
                 data: results
             });
-        }
-    });
-});
-
-// Put route for updating a department's information
-department.put('/', (req,res) => {
-    // Retrieve the department from the client request
-    const departmentName = req.body["depName"];
-    const newDepartmentName = req.body["newDepName"];
-    const params = [newDepartmentName, departmentName];
-
-    // Define the query string in a variable
-    const queryString = `UPDATE department SET department_name = ? WHERE department_name = ?`;
-
-    // Query the database
-    db.query(queryString, params, (err, results) => {
-        if (err) {
-            res.json({
-                message: "error",
-                error: err
-            });
-        } else {
-            res.json({
-                message: "success",
-                data: results
-                });
         }
     });
 });
