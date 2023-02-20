@@ -31,10 +31,9 @@ const postFetch = (table, req) => {
     })
     .then( (response) => {
         if (!response.ok) {
-            throw new Error('Something went wrong');
-        } else if (response.message == "error") {
-            console.error(response.error);
+            throw response.json();
         }
+        return response.json();
     })
     .then( () => {
         console.log(`The updated ${table} table: `)
@@ -53,13 +52,11 @@ const putFetch = (table, req) => {
         })
         .then( (response) => {
             if (!response.ok) {
-                throw new Error('Something went wrong');
-            } else if (response.message == "error") {
-                console.error(response.error);
+                throw response.json();
             }
+            return response.json();
         })
         .then( () => {
-            
             console.log(`The updated ${table} table: `)
     
             // Make a GET request to display the updated table

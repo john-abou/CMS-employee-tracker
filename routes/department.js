@@ -32,7 +32,7 @@ department.post('/', (req,res) => {
     const queryString = `INSERT INTO department (department_name) VALUES (?)`;
 
     // Query the database
-    db.query(queryString, name, (err, results) => {
+    db.query(queryString, name, (err, data) => {
         if (err) {
             res.json({
                 message: "error",
@@ -41,7 +41,7 @@ department.post('/', (req,res) => {
         } else {
             res.json({
                 message: "success",
-                data: results
+                results: data
             });
         }
     });

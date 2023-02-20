@@ -32,7 +32,7 @@ roles.post('/', (req,res) => {
     // Define the query
     const query = `INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)`
 
-    db.query(query, params, (err, results) => {
+    db.query(query, params, (err, data) => {
         if (err) {
             res.json({
                 message: "error",
@@ -41,7 +41,7 @@ roles.post('/', (req,res) => {
         } else {
             res.json({
                 message: "success",
-                result: results
+                result: data
             });
         }
     });

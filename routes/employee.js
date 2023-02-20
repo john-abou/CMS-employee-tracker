@@ -26,8 +26,8 @@ employee.get('/', (req,res) => {
 // POST route for adding an employee to the employees table
 employee.post('/', (req,res) => {
     // Extract inputs from the request
-    const { firstName, lastName, role_id, manager_id } = req.body;
-    const params = [firstName, lastName, role_id, manager_id];
+    const { first_name, last_name, role_id, manager_id } = req.body;
+    const params = [first_name, last_name, role_id, manager_id];
 
     // Define the query 
     const query = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`
@@ -37,15 +37,15 @@ employee.post('/', (req,res) => {
         if (err) {
             res.json({
                 message: "error",
-                result: err
+                results: err
             });
         } else {
             res.json({
                 message: "success",
-                result: data
+                results: data
             });
         }
-    })
+    }) 
 });
 
 // Put route for updating an employee's information

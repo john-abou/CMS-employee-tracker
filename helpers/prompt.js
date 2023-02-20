@@ -25,7 +25,7 @@ const addRole = [{
     message: 'Please enter the new role salary: '
     } , { 
     type: 'input',
-    name: '√',
+    name: 'department_id',
     message: 'Please enter the new role department ID: '
     }
 ];

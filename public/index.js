@@ -9,7 +9,6 @@ const { postFetch, getFetch, putFetch } = require("../helpers/client-requests");
 inquirer.prompt(questions)
     .then((answers) => {
         const { action, table } = answers;
-        console.log(answers);
         switch (action) {
             case "view":
                 getFetch(table);
