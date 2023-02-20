@@ -1,33 +1,54 @@
 // Import inquirer
 const inquirer = require('inquirer');
-
-// Define options
-const options = ["view all departments", "view all roles", "view all employees", "add a department", "add a role", "add an employee", "update an employee role"];
-
-// Define prompt questions and properties needed for additions/updates to tables
-const questions = [{
-    type: 'list',
-    name: 'options',
-    message: 'What would you like to do?',
-    choices: options
-}];
-const addDepartment = [{}];
-const addRole = [{}];
-const addEmployee = [{}];
-const updateEmployeeRole = [{}];
+const cTable = require('console.table');
+const {questions, addDepartment, addRole, addEmployee, updateEmployeeRole} = require("./prompt");
+const fetch = require('isomorphic-fetch');
 
 inquirer.prompt(questions)
     .then((answers) => {
-        switch (answers.options) {
-            case "view all departments":
-                
-                break;
-            case "view all roles":
+        const { action, table } = answers;
+        switch (action) {
+            case "view":
+                fetch(`http://localhost:3001/api/${table}`, {
+                    method: 'GET',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                  })
+                    .then( (response) => {
+                        if (!response.ok) {
+                            throw new Error('Something went wrong');
+                        } 
+                        return response.json();
+                        })
+                    .then( (data) => {
+                        const table = cTable.getTable(data['data']);
+                        console.log(table);
+                    });
+                    break;
+            
+            
+            
+            
+            "view all departments":
+                fetch('http://localhost:3001/api/department', {
+                    method: 'GET',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                  })
+                    .then( (response) => {
+                        if (!response.ok) {
+                            throw new Error('Something went wrong');
+                        } 
+                        return response.json();
+                        })
+                    .then( (data) => {
+                        const table = cTable.getTable(data['data']);
+                        console.log(table);
+                    });
+                    break;
 
-                break;
-            case "view all employees":
-        
-                break;
             case "add a department":
 
                 break;
@@ -38,9 +59,6 @@ inquirer.prompt(questions)
 
                 break;
             case "update an employee role":
-
-                break;
-            default:
 
                 break;
         }

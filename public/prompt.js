@@ -1,10 +1,14 @@
 // Define prompt questions and properties needed for additions/updates to tables
-const options = ["view all departments", "view all roles", "view all employees", "add a department", "add a role", "add an employee", "update an employee role"];
 const questions = [{
     type: 'list',
-    name: 'options',
-    message: 'What would you like to do?',
-    choices: options
+    name: 'action',
+    message: 'Would you like to view a table or add/update a record?',
+    choices: ['view', 'add', 'update']
+}, {
+    type: 'list',
+    name: 'table',
+    message: 'Which table?',
+    choices: ['department', 'roles', 'employee']
 }];
 const addDepartment = [{
     type: 'input',
@@ -64,4 +68,4 @@ const updateEmployeeRole = [{
     }
 ];
 
-module.exports = {options, questions, addDepartment, addRole, addEmployee, updateEmployeeRole};
+module.exports = {questions, addDepartment, addRole, addEmployee, updateEmployeeRole};
