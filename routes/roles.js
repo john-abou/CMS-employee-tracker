@@ -1,6 +1,6 @@
 // Define the roles router
 const roles = require('express').Router();
-const db = require('../server');
+const db = require('../db/db');
 
 // GET route for displaying the employees
 roles.get('/', (req,res) => {
