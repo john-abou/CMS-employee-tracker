@@ -1,5 +1,6 @@
 // Define the department router
 const department = require('express').Router();
+const db = require('../server');
 
 // GET route for displaying the departments
 department.get('/', (req,res) => {

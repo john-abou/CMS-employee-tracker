@@ -1,6 +1,6 @@
 // Import the necessary modules
 const express = require('express');
-const path = require('path');
+const mysql = require('mysql2');
 const app = express();
 
 // Import custom middleware and the api route
@@ -30,8 +30,22 @@ app.get('*', (req, res) => {
     });
 });
 
-// Let the server listen on the given port
+// Set up the server to listen on the given port
 app.listen(port, (err) => {
     err ? console.log(err) : console.log(`App listening at http://localhost:${PORT}`)
 });
 
+// Create the db connection to mysql
+const db = mysql.createConnection(
+    {
+      // Enter connection info -- host, user, pw, default db
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'CMS'
+    },
+    console.log(`Connected to the movie_db database.`)
+  ); 
+
+// Export the mysql connection
+module.exports = db;
