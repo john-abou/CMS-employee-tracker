@@ -4,16 +4,18 @@ const fetch = require('isomorphic-fetch');
 
 // Import prompts and functions from other files
 const {questions, addDepartment, addRole, addEmployee, updateEmployeeRole} = require("../helpers/prompt");
-const { postFetch, getFetch } = require("../helpers/client-requests");
+const { postFetch, getFetch, putFetch } = require("../helpers/client-requests");
 
 inquirer.prompt(questions)
     .then((answers) => {
         const { action, table } = answers;
+        console.log(answers);
         switch (action) {
             case "view":
                 getFetch(table);
                 break;
             case "add":
+                // Make a new prompt to retrieve table specific info used in the request
                 switch (table) {
                     case "department":
                         inquirer.prompt(addDepartment)
@@ -34,35 +36,23 @@ inquirer.prompt(questions)
                             });
                         break;
                     }
-                break;
+                    break;
             case "update":
-
-
-
-
-/*
-                postFetch(table,)
-                fetch(`http://localhost:3001/api/${table}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify( req ),
-                })
-                    .then( (response) => {
-                        if (!response.ok) {
-                            throw new Error('Something went wrong');
-                        } 
-                        return response.json();
-                        })
-                    .then( (data) => {
-                        const table = cTable.getTable(data['data']);
-                        console.log(table);
-                    });
-                break;
-                */
-            case "update an employee role":
-
-                break;
+                // Make a new prompt to retrieve table specific info used in the request
+                switch (table) {
+                    case "department":
+                        console.log(`Sorry, we don't have that feature for the ${table} table yet.`)
+                        break;
+                    case "roles":
+                        console.log(`Sorry, we don't have that feature for the ${table} table yet.`)
+                        break;
+                    case "employee":
+                        inquirer.prompt(updateEmployeeRole)
+                            .then((params) => {
+                                putFetch(table, params);
+                            });
+                        break;
+                    }
+                    break;
         }
     });
