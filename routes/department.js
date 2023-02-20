@@ -1,6 +1,5 @@
 // Define the department router
 const department = require('express').Router();
-const db = require('../server');
 
 // GET route for displaying the departments
 department.get('/', (req,res) => {
@@ -8,7 +7,7 @@ department.get('/', (req,res) => {
     const queryString = `SELECT * FROM department`;
 
     // Query the database
-    db.query(queryString, (err, results) => {
+    db.execute(queryString, (err, results) => {
         if (err) {
             res.json({
                 message: "error",

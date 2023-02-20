@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "concurrently 'node public/index.js' 'node server.js'"
+    "launch": "concurrently 'node public/index.js' 'node server.js'"
   },
   "keywords": [],
   "author": "",
