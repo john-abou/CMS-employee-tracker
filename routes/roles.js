@@ -4,7 +4,7 @@ const db = require('../db/db');
 
 // GET route for displaying the employees
 roles.get('/', (req,res) => {
-
+    // Extract request
 });
 
 // POST route for adding a job to the roles table

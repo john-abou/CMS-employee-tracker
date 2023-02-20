@@ -35,7 +35,7 @@ CREATE TABLE employee (
     role_id INT NOT NULL,
     manager_id VARCHAR(30),
     FOREIGN KEY (role_id) 
-    REFERENCES roles(id),
+    REFERENCES roles(id)
 );
 
 source db/seed.sql;
