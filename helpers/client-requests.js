@@ -3,43 +3,52 @@ const cTable = require('console.table');
 
 // Define GET requests
 const getFetch = (table) => {
-    fetch(`http://localhost:3001/api/${table}`, {
+    return new Promise((resolve, reject) => {
+      fetch(`http://localhost:3001/api/${table}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       })
-        .then( (response) => {
-            if (!response.ok) {
-                throw new Error('Something went wrong');
-            } 
-            return response.json();
-            })
-        .then( (data) => {
-            // Define the table and log it
-            const tableConsole = cTable.getTable(data['data']);
-
-            console.log(`\nThe ${table} table: \n` + tableConsole);
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Something went wrong');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const tableConsole = cTable.getTable(data['data']);
+          console.log(`\nThe ${table} table: \n` + tableConsole);
+          resolve(data);
+        })
+        .catch((error) => {
+          reject(error);
         });
-}
+    });
+  };
 
 // Define POST requests
 const postFetch = (table, req) => {
-    fetch(`http://localhost:3001/api/${table}`, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json' },
-    body: JSON.stringify( req ), // Stringify the object before sending it to the server
+    return new Promise((resolve, reject) => {
+        fetch(`http://localhost:3001/api/${table}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json' },
+        body: JSON.stringify( req ), // Stringify the object before sending it to the server
+        })
+        .then( (response) => {
+            if (!response.ok) {
+                throw response.json();
+            }
+            return response.json();
+        })
+        .then( (data) => {
+            console.log(data['message']);
+            resolve(data);
+        })
+        .catch((error) => {
+            reject(error);
+          });
     })
-    .then( (response) => {
-        if (!response.ok) {
-            throw response.json();
-        }
-        return response.json();
-    })
-    .then( () => {
-        // Make a GET request to display the updated table
-        getFetch(table);
-    });
 }
 
 // Define PUT requests
@@ -55,10 +64,13 @@ const putFetch = (table, req) => {
             }
             return response.json();
         })
-        .then( () => {
-            // Make a GET request to display the updated table
-            getFetch(table);
-        });
+        .then( (data) => {
+            console.log(data['message']);
+            resolve(data);
+        })
+        .catch((error) => {
+            reject(error);
+          });;
 }
 
 module.exports = { postFetch, getFetch, putFetch };
