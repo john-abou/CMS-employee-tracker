@@ -5,9 +5,7 @@ const db = require('../db/db');
 // GET route for displaying the employees
 employee.get('/', (req,res) => {
  // Define the query string in a variable
-    //const queryString = `SELECT e.id, first_name, last_name, department_id, salary, manager_id FROM employee AS e INNER JOIN roles AS r WHERE r.id = e.role_id ORDER BY e.id`;
-
-    const queryString = `SELECT e.id, e.first_name, e.last_name, r.title AS title, d.name AS department, salary, CONCAT(m.first_name, " ", m.last_name) as Manager FROM employee AS e INNER JOIN role AS r ON e.role_id = r.id INNER JOIN department AS d ON r.department_id = d.id LEFT JOIN employee AS m ON e.manager_id = m.id`;
+    const queryString = `SELECT e.id, e.first_name, e.last_name, r.title AS title, department_name, salary, CONCAT(m.first_name, " ", m.last_name) as Manager FROM employee AS e INNER JOIN roles AS r ON e.role_id = r.id INNER JOIN department AS d ON r.department_id = d.id LEFT JOIN employee AS m ON e.manager_id = m.id`;
 
     // Query the database
     db.query(queryString, (err, results) => {

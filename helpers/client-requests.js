@@ -17,8 +17,9 @@ const getFetch = (table) => {
             })
         .then( (data) => {
             // Define the table and log it
-            const table = cTable.getTable(data['data']);
-            console.log(table);
+            const tableConsole = cTable.getTable(data['data']);
+
+            console.log(`\nThe ${table} table: \n` + tableConsole);
         });
 }
 
@@ -36,8 +37,6 @@ const postFetch = (table, req) => {
         return response.json();
     })
     .then( () => {
-        console.log(`The updated ${table} table: `)
-
         // Make a GET request to display the updated table
         getFetch(table);
     });
@@ -57,8 +56,6 @@ const putFetch = (table, req) => {
             return response.json();
         })
         .then( () => {
-            console.log(`The updated ${table} table: `)
-    
             // Make a GET request to display the updated table
             getFetch(table);
         });
