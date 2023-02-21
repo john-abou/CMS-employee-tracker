@@ -12,7 +12,7 @@
 - [Questions](#questions)
 
 ## Description
-This repository was built to practice many of the skills I accumulated over the last month including -- node.js, express.js, modularization, http requests, SQL, and prepared statements. Currently, the CMS employee tracker allows the user to read , add, and edit data in a table that is hosted on their local server. In the future, I would like to edit my SQL code so it uses OOP to structure the queries. Also, I'd like to use jest to ensure the classes and prompts work as intended, also so that the expected errors are being thrown where necessary. This was a great learning experience and it was great practice for building my own apps. I can't wait to start working with HTML and CSS to make everything come full circle and build a fullstack app.
+This repository was built to practice many of the skills I accumulated over the last month including -- node.js, express.js, modularization, http requests, SQL, and prepared statements. Currently, the CMS employee tracker allows the user to read , add, and edit data in a table/db that is hosted on their local server. In the future, I would like to edit my JS code so it uses OOP to structure the queries. Also, I'd like to use jest to ensure the classes and prompts work as intended and the expected errors are being thrown where necessary. This was a great learning experience for building my own fullstack app. I can't wait to start working with HTML and CSS to make everything come full circle and build a "complete" fullstack app.
 
 ## Installation
 My project can be installed from github -- the link is: https://github.com/john-abou/CMS-employee-tracker
