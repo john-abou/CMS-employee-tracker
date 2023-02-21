@@ -1,6 +1,6 @@
 // Define the employees router
 const employee = require('express').Router();
-const db = require('../db/db');
+const db = require('../config/db');
 
 // GET route for displaying the employees
 employee.get('/', (req,res) => {
