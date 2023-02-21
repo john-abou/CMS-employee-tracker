@@ -77,4 +77,4 @@ inquirer.prompt(questions)
                     }
                     break;
         }
-    });
+    })
