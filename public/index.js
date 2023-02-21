@@ -13,8 +13,7 @@ function CMS() {
         const { action, table } = answers;
         switch (action) {
             case "view":
-                getFetch(table);
-                CMS();
+                getFetch(table).then(() => CMS());
                 break;
             case "add":
                 // Make a new prompt to retrieve table specific info used in the request
@@ -26,8 +25,11 @@ function CMS() {
                                 varCharCheck(params['department_name'], 30);
 
                                 // Make the post request
-                                postFetch(table, params);
-                                CMS();
+                                postFetch(table, params)
+                                    // Then display the new data
+                                    .then(()=> getFetch(table))
+                                    // Then re-run the code
+                                    .then(()=> CMS());
                             });
                         break;
                     case "roles":
@@ -39,8 +41,11 @@ function CMS() {
                                 intCheck(params['department_id']);
 
                                 // Make the post request
-                                postFetch(table, params);
-                                CMS();
+                                postFetch(table, params)
+                                    // Then display the updated data
+                                    .then(()=> getFetch(table))
+                                    // Then re-run the code
+                                    .then(()=> CMS());
                             });
                         break;
                     case "employee":
@@ -53,8 +58,11 @@ function CMS() {
                                 varCharCheck(params['manager_id'], 30); 
 
                                 // Make the POST request
-                                postFetch(table, params);
-                                CMS();
+                                postFetch(table, params)
+                                    // Then display the updated data
+                                    .then(()=> getFetch(table))
+                                    // Then re-run the code
+                                    .then(()=> CMS());
                             });
                         break;
                     }
@@ -77,8 +85,11 @@ function CMS() {
                                 intCheck(params['employee_id']);
 
                                 // Make the PUT request
-                                putFetch(table, params);
-                                CMS();
+                                putFetch(table, params)
+                                    // Then display the updated data
+                                    .then(()=> getFetch(table))
+                                    // Then re-run the code
+                                    .then(()=> CMS());
                             });
                         break;
                     }
