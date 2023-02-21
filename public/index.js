@@ -6,12 +6,15 @@ const fetch = require('isomorphic-fetch');
 const {questions, addDepartment, addRole, addEmployee, updateEmployeeRole, varCharCheck, intCheck } = require("../helpers/prompt");
 const { postFetch, getFetch, putFetch } = require("../helpers/client-requests");
 
-inquirer.prompt(questions)
+
+function CMS() {
+    inquirer.prompt(questions)
     .then((answers) => {
         const { action, table } = answers;
         switch (action) {
             case "view":
                 getFetch(table);
+                CMS();
                 break;
             case "add":
                 // Make a new prompt to retrieve table specific info used in the request
@@ -24,6 +27,7 @@ inquirer.prompt(questions)
 
                                 // Make the post request
                                 postFetch(table, params);
+                                CMS();
                             });
                         break;
                     case "roles":
@@ -36,6 +40,7 @@ inquirer.prompt(questions)
 
                                 // Make the post request
                                 postFetch(table, params);
+                                CMS();
                             });
                         break;
                     case "employee":
@@ -49,6 +54,7 @@ inquirer.prompt(questions)
 
                                 // Make the POST request
                                 postFetch(table, params);
+                                CMS();
                             });
                         break;
                     }
@@ -72,9 +78,12 @@ inquirer.prompt(questions)
 
                                 // Make the PUT request
                                 putFetch(table, params);
+                                CMS();
                             });
                         break;
                     }
                     break;
         }
     })
+}
+CMS()
