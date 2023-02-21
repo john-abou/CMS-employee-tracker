@@ -20,7 +20,7 @@ My project can be installed from github -- the link is: https://github.com/john-
 ## Usage
 My project requires the use of the user's localhost/server. The user should have 2 terminals going to use my app, one will to turn on the server so it listens for any incoming requests. The second terminal will be to run the CLI app. The server can be started by running "npm start" in the command line, and the app can be started by running "npm run start" in the command line.
 
-Before you can run the app, please ensure that you install the corresponding dependencies by running "npm i" in the command line. Also, run the schema.sql file in your MySQL workbench to create the database and tables. I have added a line to the schema.sql file to automatically run the seed file to populate the tables with sample data. If you would like to add your own data, you can do so by running the seed.sql file in your MySQL workbench.
+Before you can run the app, please ensure that you install the corresponding dependencies by running "npm i" in the command line. Also, run the schema.sql file in your MySQL workbench to create the database and tables. I have added a line to the schema.sql file to automatically run the seed file to populate the tables with sample data. If you would like to add your own data, you can do so by updating and running the seed.sql file in your MySQL workbench.
 
 ## License
 This project is licensed under the MIT License.
