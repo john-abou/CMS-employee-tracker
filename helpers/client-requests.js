@@ -53,6 +53,7 @@ const postFetch = (table, req) => {
 
 // Define PUT requests
 const putFetch = (table, req) => {
+  return new Promise((resolve, reject) => { 
     fetch(`http://localhost:3001/api/${table}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json' },
@@ -70,7 +71,9 @@ const putFetch = (table, req) => {
         })
         .catch((error) => {
             reject(error);
-          });;
+          });
+
+  });
 }
 
 module.exports = { postFetch, getFetch, putFetch };
