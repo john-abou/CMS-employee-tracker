@@ -52,28 +52,25 @@ const postFetch = (table, req) => {
 }
 
 // Define PUT requests
-const putFetch = (table, req) => {
-  return new Promise((resolve, reject) => { 
-    fetch(`http://localhost:3001/api/${table}`, {
-        method: 'PUT',
-        headers: {'Content-Type': 'application/json' },
-        body: JSON.stringify( req ), // Stringify the object before sending it to the server
-        })
-        .then( (response) => {
-            if (!response.ok) {
-                throw response.json();
-            }
-            return response.json();
-        })
-        .then( (data) => {
-            console.log(data['message']);
-            resolve(data);
-        })
-        .catch((error) => {
-            reject(error);
-          });
+const putFetch = async (table, req) => {
+  try {
+    const response = await fetch(`http://localhost:3001/api/${table}`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json' },
+      body: JSON.stringify(req)
+    });
 
-  });
+    if (!response.ok) {
+      throw await response.json();
+    }
+
+    const data = await response.json();
+    console.log(data['message']);
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }
+
 
 module.exports = { postFetch, getFetch, putFetch };
